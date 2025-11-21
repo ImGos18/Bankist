@@ -260,12 +260,12 @@ btnTransfer.addEventListener('click', function (e) {
   const recieverAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
-  inputTransferAmount.value = inputTransferTo.value = '';
+
   if (
     amount > 0 &&
     recieverAcc &&
     currentAccount.balance >= amount &&
-    recieverAcc?.username != currentAccount.username
+    recieverAcc.username != currentAccount.username
   ) {
     currentAccount.movements.push(-amount);
     currentAccount.movementsDates.push(new Date());
@@ -273,6 +273,7 @@ btnTransfer.addEventListener('click', function (e) {
 
     updateUI(currentAccount);
   }
+  inputTransferAmount.value = inputTransferTo.value = '';
 });
 
 btnLoan.addEventListener('click', function (e) {
